@@ -1,5 +1,4 @@
-﻿
-//Hunter Cannon
+﻿//Hunter Cannon
 //Base Maze
 //10/21/2026
 //FinalBaceMaze.cs
@@ -16,7 +15,7 @@ namespace BaseMazeFINAL
 {
 
 
-    internal class program
+    internal class FinalBaceMaze
     {
 
 
@@ -71,6 +70,7 @@ namespace BaseMazeFINAL
         static int R = 28;
         static int S = 29;
 
+        static int Z = 10;
 
 
         static int keys;
@@ -90,32 +90,36 @@ namespace BaseMazeFINAL
                 //the starting values get calculated in the get_enemys() function
                 //—----------------------------------------------------------------------------------------------------------
                 //each row is a different enemy 
-                //columns  0: Y-position    1: X-position   2: Direction   3: enemy-type  4: oldY  6:oldX
+                //columns  0: Y-position    1: X-position   2: Direction   3: enemy-type  4: oldY  6:oldX  7:origanalY 8:origanalX
                 //—---------------------------------------------------------------------------------------------------------
                 // if i wanted to add a new enemy i would just add one on the grid
                 // and then add another blank row with 4 zero’s
+                //then change the (numbofenemys) var by 1
                 //—---------------------------------------------------------------------------------------------------------
 
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
 
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
-                new int[6]{0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
 
-
-                new int[6]{0,0,0,0,0,0}
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
+                new int[8]{0,0,0,0,0,0,0,0},
 
 
 
 
             };
-        static int numb_of_enemys = 10;
+
+        //change this number to change the number of enemys;
+        static int numb_of_enemys = 13;
 
 
         static int[][] GRID =
@@ -141,7 +145,7 @@ namespace BaseMazeFINAL
                 //8=enemy2 (left right)
                 //9=enemy2 (right left)
 
-                //10=enemy3              
+                //10=enemy3    Z           
                   
                 //11=key    A
                 //12=master key     B
@@ -170,16 +174,17 @@ namespace BaseMazeFINAL
                 //28=Barrier(vertical)     R
                 //29=Barrier   S
 
-               new int[40] {1,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {1,0,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {1,0,0,0,0,1,D,1,C,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
+
+               new int[40] {1,A,1,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {B,Q,A,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {1,B,Q,0,0,1,D,1,C,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
-               new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
-               new int[40] {1,0,0,0,A,0,A,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
-               new int[40] {0,0,1,0,B,0,B,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {1,1,1,0,0,0,0,0,0,6,0,0,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,0,H,I,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,1,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
+               new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
+               new int[40] {1,0,0,0,A,0,A,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
+               new int[40] {0,0,1,0,B,0,B,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {1,1,1,0,0,0,0,0,0,6,0,0,1,1,0,1,0,Z,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,0,0,0,0,H,I,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
                new int[40] {1,1,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,0,0,4,2,4,2,0},
@@ -190,8 +195,8 @@ namespace BaseMazeFINAL
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,R,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,F,F,F,0,0,0,0,0,0,1,0,S,S,S,S,S,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {1,1,0,1,0,0,G,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,Z,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
@@ -204,7 +209,7 @@ namespace BaseMazeFINAL
         static void Main(string[] args)
         {
 
-
+            Console.Title = "Base Maze";
 
             get_enemys();
             initalazation();
@@ -424,23 +429,38 @@ namespace BaseMazeFINAL
                 if (!isRunning)
                     return;
 
-
-                for (int enemyID = 0; enemyID < numb_of_enemys; enemyID++)
+                if (FrameCount % 2 == 0)
                 {
-                    if (!isRunning)
-                        return;
-                    if (E_stats[enemyID][3] == 2)
+                    for (int enemyID = 0; enemyID < numb_of_enemys; enemyID++)
                     {
-                        MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], 2);
+                        if (!isRunning)
+                            return;
+
+                        if (E_stats[enemyID][3] == 3)
+                        {
+                            if (FrameCount % 4 == 0)
+                            {
+                                MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+
+                            }
+
+                        }
+                        else
+                        {
+                            MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+
+                        }
+
+
+
+
+
+
+
 
                     }
-                    else
-                    {
-                        MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], 1);
-
-                    }
-
                 }
+
 
                 CheckEnemyCollision();
 
@@ -580,6 +600,8 @@ namespace BaseMazeFINAL
                                 E_stats[id][3] = 3;
                                 E_stats[id][4] = Yaxis;
                                 E_stats[id][5] = Xaxis;
+                                E_stats[id][6] = Yaxis;
+                                E_stats[id][7] = Xaxis;
 
                                 GRID[Yaxis][Xaxis] = 0;
                                 id++;
@@ -613,35 +635,120 @@ namespace BaseMazeFINAL
                     int nextX = X;
                     int nextY = Y;
 
-                    switch (direction)
+                    if (speed == 3)
                     {
-                        case 1: nextY -= speed; break;
-                        case 2: nextX += speed; break;
-                        case 3: nextY += speed; break;
-                        case 4: nextX -= speed; break;
+                        //--------------------------------------------------------------------------
+                        //if the enemy is type(3) it moves based on its positon in relation to the playes position
+                        //--------------------------------------------------------------------------------
 
+                        int enemy_move_Y = 0;
+                        int enemy_move_X = 0;
+
+                        if (E_stats[id][0] > playerPos[0])
+                        {
+                            enemy_move_Y--;
+                        }
+                        else if (E_stats[id][0] < playerPos[0])
+                        {
+                            enemy_move_Y++;
+
+                        }
+
+                        if (E_stats[id][1] > playerPos[1])
+                        {
+                            enemy_move_X--;
+                        }
+                        else if (E_stats[id][1] < playerPos[1])
+                        {
+                            enemy_move_X++;
+
+                        }
+
+                        //-------------------------------------------------------------
+                        //resets the following enemy to its origanal position if it kills the player to prevent spawn killing
+                        //-------------------------------------------------------------
+                        if (enemy_move_Y == 0 && enemy_move_X == 0)
+                        {
+                            PLAYER_DIED();
+                            E_stats[id][0] = E_stats[id][6];
+                            E_stats[id][1] = E_stats[id][7];
+                            return;
+                        }
+
+                        nextX += enemy_move_X;
+                        nextY += enemy_move_Y;
+                    }
+                    else
+                    {
+                        //-------------------------------------------------------------
+                        //if the enemy is type(1-2) it moves based on its derection and speed
+                        //-------------------------------------------------------------
+
+                        switch (direction)
+                        {
+                            case 1: nextY -= speed; break;
+                            case 2: nextX += speed; break;
+                            case 3: nextY += speed; break;
+                            case 4: nextX -= speed; break;
+
+                        }
                     }
 
-                    if (nextX < 0 || nextX > 40 || nextY > 25 || nextY < 0 || GRID[nextY][nextX] == 1 || GRID[nextY][nextX] == 13 || GRID[nextY][nextX] == 14)
+
+
+                    if (nextX < 0 || nextX > 40 || nextY > 25 || nextY < 0 || GRID[nextY][nextX] == 1 || GRID[nextY][nextX] == 13 || GRID[nextY][nextX] == 14 || GRID[nextY][nextX] == 28 || GRID[nextY][nextX] == 29)
                     {
 
-                        switch (direction)
-                        {
-                            case 1: direction = 3; break;
-                            case 2: direction = 4; break;
-                            case 3: direction = 1; ; break;
-                            case 4: direction = 2; break;
 
+
+                        if (speed == 3)
+                        {
+                            //-------------------------------------------------------------
+                            //if the enemy is type(3) it tries to see if any of its movment works.
+                            //-------------------------------------------------------------
+                            int numb = 0;
+
+                            if (GRID[Y][nextX] == 1 || GRID[Y][nextX] == 13 || GRID[Y][nextX] == 14 || GRID[Y][nextX] == 29)
+                            {
+                                nextX = X;
+                                numb++;
+                            }
+                            if (GRID[nextY][X] == 1 || GRID[nextY][X] == 13 || GRID[Y][nextX] == 14 || GRID[Y][nextX] == 28)
+                            {
+                                nextY = Y;
+                                numb++;
+                            }
+                            if (numb == 0)
+                            {
+                                nextY = Y;
+                                nextX = X;
+
+                            }
+                        }
+                        else
+                        {
+                            //-------------------------------------------------------------
+                            //if the enemy is type(1-2) it bounces back when it hits the wall
+                            //-------------------------------------------------------------
+                            switch (direction)
+                            {
+                                case 1: direction = 3; break;
+                                case 2: direction = 4; break;
+                                case 3: direction = 1; ; break;
+                                case 4: direction = 2; break;
+
+                            }
+
+                            switch (direction)
+                            {
+                                case 1: nextY -= (speed * 2); break;
+                                case 2: nextX += (speed * 2); break;
+                                case 3: nextY += (speed * 2); break;
+                                case 4: nextX -= (speed * 2); break;
+
+                            }
                         }
 
-                        switch (direction)
-                        {
-                            case 1: nextY -= (speed * 2); break;
-                            case 2: nextX += (speed * 2); break;
-                            case 3: nextY += (speed * 2); break;
-                            case 4: nextX -= (speed * 2); break;
-
-                        }
 
 
                     }
@@ -838,7 +945,7 @@ namespace BaseMazeFINAL
             {
                 Console.SetCursorPosition(0, 0);
                 Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                Console.WriteLine($"Stock BaceMaze: By Hunter Cannon   ||    LIVES:{lives}       KEYS:{keys}      Master Keys:{masterkeys}  {wasd_pressed[0]}{wasd_pressed[1]}{wasd_pressed[2]}{wasd_pressed[3]}");
+                Console.WriteLine($"Stock BaceMaze: By Hunter Cannon   ||    LIVES:{lives}       KEYS:{keys}      Master Keys:{masterkeys}  {GRID[^1][^1]} ");
                 Console.WriteLine("----------------------------------------------------------------------------------------------------\n");
 
                 for (int Yaxis = 0; Yaxis < 25; Yaxis++)
@@ -995,7 +1102,7 @@ namespace BaseMazeFINAL
 
                                     Console.Write("!!");
 
-                                    if (FrameCount == 10)
+                                    if (FrameCount % 10 == 0)
                                     {
                                         GRID[Yaxis][Xaxis] = 17;
                                         FrameCount = 0;
@@ -1007,10 +1114,10 @@ namespace BaseMazeFINAL
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("..");
 
-                                    if (FrameCount == 10)
+                                    if (FrameCount % 10 == 0)
                                     {
                                         GRID[Yaxis][Xaxis] = 16;
-                                        FrameCount = 0;
+
                                     }
 
                                     break;
