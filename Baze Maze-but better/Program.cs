@@ -9,7 +9,7 @@ using System.Threading;
 using System.Windows.Input;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
-
+using System.Media;
 
 namespace BaseMazeFINAL
 {
@@ -208,7 +208,12 @@ namespace BaseMazeFINAL
             };
         static void Main(string[] args)
         {
-
+            if (OperatingSystem.IsWindows())
+            {
+                SoundPlayer mussiccc = new SoundPlayer("DesertoDuneosRockOrRoll.wav");
+                mussiccc.Load();
+                mussiccc.PlayLooping();
+            }
             Console.Title = "Base Maze";
 
             get_enemys();
