@@ -415,6 +415,14 @@ namespace BaseMazeFINAL
 
                             case 18: PlayerWon = true; isRunning = false; break;       //win
                             case 19: PlayerWon = true; isRunning = false; break;       //win
+
+                            case 21: playerPos[0] = portal_pos_1[2]; playerPos[1] = portal_pos_1[3]+1; break;       //teliport when entering portal 
+                            case 22: playerPos[0] = portal_pos_1[0]; playerPos[1] = portal_pos_1[1] + 1; break;       //teliport when entering portal
+                                                                                                                      //
+                            case 23: playerPos[0] = portal_pos_2[2]; playerPos[1] = portal_pos_2[3] + 1; break;       //teliport when entering portal 
+                            case 24: playerPos[0] = portal_pos_2[0]; playerPos[1] = portal_pos_2[1] + 1; break;       //teliport when entering portal 
+
+
                             case 27: playerPos[0] = NextY; playerPos[1] = NextX; checkpoint[0] = playerPos[0]; checkpoint[1] = playerPos[1]; break;     //checkpoint
 
                             case 28: playerPos[0] = NextY; playerPos[1] = NextX; break; //barriers can be entered, but inberrier() stops certain movement options
