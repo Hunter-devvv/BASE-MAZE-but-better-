@@ -176,24 +176,24 @@ namespace BaseMazeFINAL
                new int[40] {B,Q,A,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,B,Q,0,0,1,D,1,C,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
-               new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
+               new int[40] {1,0,0,0,0,0,0,0,0,0,N,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
                new int[40] {1,0,0,0,A,0,A,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
                new int[40] {0,0,1,0,B,0,B,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,1,1,0,0,0,0,0,0,6,0,0,1,1,0,1,0,Z,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,0,0,0,0,H,I,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,0,0,0,0,H,I,0,0,0,0,0,0,0,M,0,0,0,0,0},
                new int[40] {0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
                new int[40] {1,1,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,0,0,4,2,4,2,0},
-               new int[40] {1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,R,0,Z,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {0,0,0,0,0,K,0,0,0,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {0,0,0,0,0,0,0,0,0,Q,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
                new int[40] {0,0,0,0,0,E,0,0,0,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,R,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,F,F,F,0,0,0,0,0,0,1,0,S,S,S,S,S,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,1,0,1,0,0,G,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,L,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,1,1,1,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
@@ -416,11 +416,11 @@ namespace BaseMazeFINAL
                             case 18: PlayerWon = true; isRunning = false; break;       //win
                             case 19: PlayerWon = true; isRunning = false; break;       //win
 
-                            case 21: playerPos[0] = portal_pos_1[2]; playerPos[1] = portal_pos_1[3]+1; break;       //teliport when entering portal 
-                            case 22: playerPos[0] = portal_pos_1[0]; playerPos[1] = portal_pos_1[1] + 1; break;       //teliport when entering portal
+                            case 21: playerPos[0] = portal_pos_1[2]+moveY; playerPos[1] = portal_pos_1[3]+moveX; break;       //teliport when entering portal 
+                            case 22: playerPos[0] = portal_pos_1[0]+moveY; playerPos[1] = portal_pos_1[1] + moveX; break;       //teliport when entering portal
                                                                                                                       //
-                            case 23: playerPos[0] = portal_pos_2[2]; playerPos[1] = portal_pos_2[3] + 1; break;       //teliport when entering portal 
-                            case 24: playerPos[0] = portal_pos_2[0]; playerPos[1] = portal_pos_2[1] + 1; break;       //teliport when entering portal 
+                            case 23: playerPos[0] = portal_pos_2[2]+moveY; playerPos[1] = portal_pos_2[3] + moveX; break;       //teliport when entering portal 
+                            case 24: playerPos[0] = portal_pos_2[0]+moveY; playerPos[1] = portal_pos_2[1] + moveX; break;       //teliport when entering portal 
 
 
                             case 27: playerPos[0] = NextY; playerPos[1] = NextX; checkpoint[0] = playerPos[0]; checkpoint[1] = playerPos[1]; break;     //checkpoint
@@ -616,6 +616,27 @@ namespace BaseMazeFINAL
                                 GRID[Yaxis][Xaxis] = 0;
                                 id++;
                                 break;
+
+                            case 21:
+                                portal_pos_1[0] = Yaxis;
+                                portal_pos_1[1] = Xaxis;
+                                break;
+
+                            case 22:
+                                portal_pos_1[2] = Yaxis;
+                                portal_pos_1[3] = Xaxis;
+                                break;
+
+                            case 23:
+                                portal_pos_2[0] = Yaxis;
+                                portal_pos_2[1] = Xaxis;
+                                break;
+
+                            case 24:
+                                portal_pos_2[2] = Yaxis;
+                                portal_pos_2[3] = Xaxis;
+                                break;
+
 
                             default: break;
 
@@ -1142,6 +1163,43 @@ namespace BaseMazeFINAL
                                     Console.ForegroundColor = ConsoleColor.Cyan;
 
                                     Console.Write("N ");
+
+                                    break;
+
+                                case 21:
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                    Console.Write("@1");
+
+                                    break;
+                                case 22:
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                    Console.Write("@1");
+
+                                    break;
+                                case 23:
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                    Console.Write("@2");
+
+                                    break;
+                                case 24:
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                    Console.Write("@2");
+
+                                    break;
+                                case 25:
+                                    Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                    Console.Write(">>");
+
+                                    break;
+                                case 26:
+                                    Console.ForegroundColor = ConsoleColor.Blue;
+
+                                    Console.Write("@ ");
 
                                     break;
                                 case 27:
