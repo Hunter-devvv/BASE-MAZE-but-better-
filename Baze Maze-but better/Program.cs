@@ -1170,7 +1170,7 @@ namespace BaseMazeFINAL
                 {
                     moveY = 0;
                 }
-                else if (GRID[Math.Clamp(y - 1, 0, 25)][x] == 28 && moveY == (-1))
+                else if (GRID[Math.Clamp(y - 1, 0, 25)][x] == 29 && moveY == (-1))
                 {
                     moveY = 0;
                 }
