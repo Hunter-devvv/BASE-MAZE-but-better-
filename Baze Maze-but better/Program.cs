@@ -69,6 +69,7 @@ namespace BaseMazeFINAL
 
         static int Z = 10;
 
+        static int T = 30;
 
         static int keys;
 
@@ -77,6 +78,11 @@ namespace BaseMazeFINAL
         static int width = 40;
 
         static int higth = 25;
+
+        static int playerspeed = 1;
+
+        //while this is bigger then 1, enemys will move slower, and it will slowly return back to 0. once its zero, enemys will move normaly again.
+        static int SLOWED_down;
 
 
         static int[][] E_stats =
@@ -170,6 +176,7 @@ namespace BaseMazeFINAL
 
                 //28=Barrier(vertical)     R
                 //29=Barrier   S
+                //30=player start   T
 
 
                new int[40] {1,A,1,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -178,16 +185,16 @@ namespace BaseMazeFINAL
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,N,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,1,5,0,0,0,0,0,0,1,0,0},
                new int[40] {1,0,0,0,A,0,A,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0},
-               new int[40] {0,0,1,0,B,0,B,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {T,0,1,0,B,0,B,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,1,1,0,0,0,0,0,0,6,0,0,1,1,0,1,0,Z,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,0,0,0,0,H,I,0,0,0,0,0,0,0,M,0,0,0,0,0},
                new int[40] {0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
                new int[40] {1,1,0,0,0,0,0,0,0,0,0,0,0,2,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+               new int[40] {1,0,0,0,P,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,Q,0,0,0,0,0,0,0,0,0,0,0,4,2,4,2,0},
                new int[40] {1,0,0,0,1,1,1,1,1,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {0,0,0,0,0,K,0,0,0,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-               new int[40] {0,0,0,0,0,0,0,0,0,Q,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
+               new int[40] {0,0,0,O,0,0,0,0,0,Q,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,0},
                new int[40] {0,0,0,0,0,E,0,0,0,0,0,0,0,0,0,R,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,R,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                new int[40] {1,0,0,0,0,F,F,F,0,0,0,0,0,0,1,0,S,S,S,S,S,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -252,26 +259,31 @@ namespace BaseMazeFINAL
 
             static void initalazation()
             {
+                //------------------------------------------------------------------------------------------------
+                //we wont use the randomised starting positions becase we want to be able to set the spawn point manualy.
+                //------------------------------------------------------------------------------------------------
+
 
                 //randomly sets players positon in y axis until they are in a blank space
 
-                bool inblank = false;
+                //bool inblank = false;
 
-                while (inblank == false)
-                {
-                    Random random = new Random();
-                    playerPos[0] = random.Next(0, higth);
-                    playerPos[1] = 0;
-
-                    if (GRID[playerPos[0]][playerPos[1]] == 0)
-                    {
-                        inblank = true;
-                    }
-
-                }
+                //while (inblank == false)
+                // {
+                // Random random = new Random();
+                //playerPos[0] = random.Next(0, higth);
+                //playerPos[1] = 0;
 
 
+                // if (GRID[playerPos[0]][playerPos[1]] == 0)
+                //{
+                //  inblank = true;
+                //}
 
+                //   }
+
+
+                SLOWED_down = 0;
                 isRunning = true;
 
                 moveX = 0;
@@ -280,7 +292,7 @@ namespace BaseMazeFINAL
                 PlayerWon = false;
                 lives = 10;
 
-
+                playerspeed = 1;
 
                 keys = 0;
                 masterkeys = 0;
@@ -310,6 +322,10 @@ namespace BaseMazeFINAL
 
             static void ENDofFrame()
             {
+                if (SLOWED_down >= 1)
+                {
+                    SLOWED_down--;
+                }
                 Stopwatch.StartNew();
 
                 while (Stopwatch.GetTimestamp() < 100)
@@ -421,7 +437,10 @@ namespace BaseMazeFINAL
                                                                                                                       //
                             case 23: playerPos[0] = portal_pos_2[2]+moveY; playerPos[1] = portal_pos_2[3] + moveX; break;       //teliport when entering portal 
                             case 24: playerPos[0] = portal_pos_2[0]+moveY; playerPos[1] = portal_pos_2[1] + moveX; break;       //teliport when entering portal 
+                            
+                            case 25: playerPos[0] = NextY; playerPos[1] = NextX; playerspeed = 2; break;    //move 2 upgrade
 
+                            case 26: playerPos[0] = NextY; playerPos[1] = NextX; SLOWED_down = 80; break;     //slow down portal
 
                             case 27: playerPos[0] = NextY; playerPos[1] = NextX; checkpoint[0] = playerPos[0]; checkpoint[1] = playerPos[1]; break;     //checkpoint
 
@@ -439,7 +458,14 @@ namespace BaseMazeFINAL
                 if (!isRunning)
                     return;
 
-                if (FrameCount % 2 == 0)
+                int waitMultipier = 1;
+
+                if (SLOWED_down >= 1)
+                {
+                    waitMultipier = 2;
+                }
+
+                if (FrameCount % (2*waitMultipier) == 0 && FrameCount!=0)
                 {
                     for (int enemyID = 0; enemyID < numb_of_enemys; enemyID++)
                     {
@@ -448,7 +474,7 @@ namespace BaseMazeFINAL
 
                         if (E_stats[enemyID][3] == 3)
                         {
-                            if (FrameCount % 4 == 0)
+                            if (FrameCount % (4*waitMultipier) == 0 && FrameCount != 0)
                             {
                                 MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
 
@@ -636,7 +662,11 @@ namespace BaseMazeFINAL
                                 portal_pos_2[2] = Yaxis;
                                 portal_pos_2[3] = Xaxis;
                                 break;
-
+                                //if its a checkpoint set the players position to it.
+                            case 30:
+                                playerPos[0] = Yaxis;
+                                playerPos[1] = Xaxis;
+                                break;
 
                             default: break;
 
@@ -887,21 +917,21 @@ namespace BaseMazeFINAL
 
                 if (wasd_pressed[0] == 1)
                 {
-                    moveY--;
+                    moveY-=playerspeed;
                 }
                 if (wasd_pressed[1] == 1)
                 {
-                    moveY++;
+                    moveY+=playerspeed;
 
                 }
                 if (wasd_pressed[2] == 1)
                 {
-                    moveX--;
+                    moveX-=playerspeed;
 
                 }
                 if (wasd_pressed[3] == 1)
                 {
-                    moveX++;
+                    moveX+=playerspeed;
 
                 }
 
@@ -1052,7 +1082,18 @@ namespace BaseMazeFINAL
 
                         if (Yaxis == playerPos[0] && Xaxis == playerPos[1])
                         {
-                            Console.ForegroundColor = ConsoleColor.Green;
+                            if (SLOWED_down >= 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Blue;
+
+
+                            }
+                            else
+                            {
+                                Console.ForegroundColor = ConsoleColor.Green;
+
+                            }
+
                             Console.Write("P ");
                         }
                         else if (enemythere == 1)
@@ -1133,19 +1174,31 @@ namespace BaseMazeFINAL
 
                                     Console.Write("!!");
 
-                                    if (FrameCount % 10 == 0)
+                                    int waitmultiplier = 1;
+                                    if (SLOWED_down>=1)
                                     {
-                                        GRID[Yaxis][Xaxis] = 17;
-                                        FrameCount = 0;
-
+                                        waitmultiplier = 2;
                                     }
+                                   
+                                        if (FrameCount % (10*waitmultiplier) == 0 && FrameCount != 0)
+                                        {
+                                            GRID[Yaxis][Xaxis] = 17;
+
+                                        }
+                                    
 
                                     break;
                                 case 17:
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("..");
 
-                                    if (FrameCount % 10 == 0)
+                                    int waitmultiplier2 = 1;
+                                    if (SLOWED_down >= 1)
+                                    {
+                                        waitmultiplier2 = 2;
+                                    }
+
+                                    if (FrameCount % (10*waitmultiplier2) == 0 && FrameCount!=0)
                                     {
                                         GRID[Yaxis][Xaxis] = 16;
 
@@ -1191,7 +1244,7 @@ namespace BaseMazeFINAL
 
                                     break;
                                 case 25:
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
+                                    Console.ForegroundColor = ConsoleColor.Blue;
 
                                     Console.Write(">>");
 
