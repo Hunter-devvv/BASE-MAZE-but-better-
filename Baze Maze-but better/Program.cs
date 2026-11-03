@@ -71,6 +71,8 @@ namespace BaseMazeFINAL
 
         static int T = 30;
 
+        static bool exited = false;
+        static bool started = false;
         static int keys;
 
         static int masterkeys;
@@ -86,6 +88,7 @@ namespace BaseMazeFINAL
         //while this is bigger then 1, enemys will move slower, and it will slowly return back to 0. once its zero, enemys will move normaly again.
         static int SLOWED_down;
 
+        static int folow_delay = 0;
 
         static int[][] E_stats =
        {
@@ -258,7 +261,7 @@ namespace BaseMazeFINAL
    new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 
 
-
+    
         };
 
         static int[][] GRID_lev2 =
@@ -269,7 +272,7 @@ namespace BaseMazeFINAL
                 new int[40]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                new int[40] {1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                new int[40] {1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,T,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -309,7 +312,7 @@ new int[40] {1,R,0,0,1,1,1,F,1,5,0,0,0,1,1,1,0,1,0,1,1,1,1,1,1,1,0,0,1,0,0,0,1,1
 new int[40] {1,R,0,0,1,0,G,0,1,0,0,0,4,1,Z,0,0,1,0,1,1,0,1,1,1,1,0,0,1,1,1,0,0,1,1,0,0,G,0,1},
 new int[40] {1,R,0,0,1,F,1,1,1,0,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,0,0,0,0,0,0,1,1,1,0,0,G,0,1},
 new int[40] {1,R,0,0,G,0,1,P,C,0,F,0,1,0,0,F,0,0,T,0,0,G,0,0,1,1,D,1,1,1,1,0,0,0,0,0,0,1,1,1},
-new int[40] {1,R,0,0,1,1,1,1,1,1,1,G,1,0,0,F,0,E,S,E,0,G,0,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1},
+new int[40] {1,R,0,0,1,1,1,1,1,1,1,G,1,0,0,G,0,E,S,E,0,F,0,0,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,1},
 new int[40] {1,R,0,0,0,0,6,1,0,F,0,0,1,0,S,S,S,S,0,S,S,S,S,0,1,1,0,0,O,1,0,0,0,0,0,0,0,0,0,1},
 new int[40] {1,R,0,0,1,1,0,1,G,1,1,1,1,S,E,0,0,0,0,0,0,0,E,S,1,1,0,0,1,1,1,1,0,0,0,0,0,1,0,1},
 new int[40] {1,R,0,0,0,1,0,1,0,F,0,G,1,1,1,5,0,0,0,0,0,0,1,1,1,1,0,0,1,1,1,1,0,0,0,0,0,1,0,1},
@@ -334,7 +337,11 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
         static void Main(string[] args)
         {
-             
+            started = false;
+            exited = false;
+            menu();
+          
+
             if (OperatingSystem.IsWindows())
             {
                 SoundPlayer mussiccc = new SoundPlayer("DesertoDuneosRockOrRoll.wav");
@@ -348,6 +355,10 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
             while (isRunning == true)
             {
+                if (exited == true)
+                {
+                    isRunning = false;
+                }
                 Input();
                 Phyisics();
 
@@ -384,6 +395,10 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     }
                     else
                     {
+                        if (exited == true)
+                        {
+                     
+                        }
                         Console.Clear();
                         Console.WriteLine("YOU LOSE");
                         Console.ReadKey();
@@ -394,6 +409,57 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
             }
 
+
+            static void menu()
+            {
+                Console.Clear();
+                Console.WriteLine("|>================================================>------------------------------------\\_______________________________>");
+                Console.WriteLine("||");
+                Console.WriteLine("||  =======_       //===           ======    ||=====|L          | \\          / |       //===      -========    ||=====|L");
+                Console.WriteLine("||  ||      ||     ||   \\\\      |==     ==|  ||                 ||\\\\        //||      ||   \\\\            //    ||");
+                Console.WriteLine("||  ||====-<       ||====\\\\      ===-        ||====+|L          || \\\\      // ||      ||====\\\\          //     ||====+|L");
+                Console.WriteLine("||  ||      \\\\     ||     ||         ===     ||                 ||  \\\\    //  ||      ||     ||       //       ||");
+                Console.WriteLine("||  ||      ||     ||     ||    |==    ==|   ||                 ||   \\\\__//   ||      ||     ||     //         ||");
+                Console.WriteLine("||  =========    ~==~    ~===~    ======     ||=====|L         ====    --    ====   ~==~    ~===~   =======-   ||=====|L");
+                Console.WriteLine("||");
+                Console.WriteLine("|>================================================>------------------------------------\\_______________________________>");
+                Console.WriteLine();
+                Console.WriteLine();
+                Console.WriteLine("                                                        --_  --   -- ");
+                Console.WriteLine("                                                        |-\\   \\\\ //");
+                Console.WriteLine("                                                        |__|   |_|");
+                Console.WriteLine("                                    ||>============================================<||");
+                Console.WriteLine("                                                     SAIGE ENQUIST-HINZ          ");
+                Console.WriteLine("                                                       HUNTER CANNON");
+                Console.WriteLine("                                                        NATH FERONG");
+                Console.WriteLine("                                                      BRAYDEN LOFGREN");
+                Console.WriteLine("");
+                Console.WriteLine("      ----   -----_    -----|   ----_   ----_     /---|      |-----| |---|        ----   |-|   __--__   --  --");
+                Console.WriteLine("     | |_| | | | ) |  | ----   (  -_   (  -_        | |        | |   |   |       | |_| | | |  |  __  |  | -- |");
+                Console.WriteLine("     |  ___| | |-\\/   | ----|   --_ \\  --_ \\        | |        | |   | | |       |  ___| | |  |  __  |   |  |");
+                Console.WriteLine("     | |     | |  \\\\  | ____  | _-  | | _-  |       | |        | |   | | |       | |     | |  | |  | |   |  |");
+                Console.WriteLine("     |_|     |_|   \\\\ |_____|  -__-    -__-         |_|        |_|   |___|       |_|     |_|  |_|  |_|   |__|");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("   ----   -----_    -----|   ----_   ----_       -----|  ----_ |----|   |-----||---|     -----| |-    -| |-| |-----| ");
+                Console.WriteLine("  | |_| | | | ) |  | ----   (  -_   (  -_      | ----  (  -_   | |--      | |  |   |    | ----   | || |        | |   ");
+                Console.WriteLine("  |  ___| | |-\\/   | ----|   --_ \\  --_ \\      | ----|  --_ \\  | |        | |  | | |    | ----|   |  |   |-|   | |   ");
+                Console.WriteLine("  | |     | |  \\\\  | ____  | _-  | | _-  |     | ____  | _-  | | |__      | |  | | |    | ____   | || |  | |   | |   ");
+                Console.WriteLine("  |_|     |_|   \\\\ |_____|  -__-    -__-       |_____|  -__-   |____|     |_|  |___|    |_____| |_    _| |_|   |_|   ");
+
+                ConsoleKey button=Console.ReadKey(true).Key;
+
+                if (button == ConsoleKey.D1)
+                {
+                    Console.Clear();
+                    started = true;
+                }
+                else
+                {
+                    exited = true;
+                    started = false;
+                }
+            }
 
             static void replacegrid(int llevel)  //resets the grid to a new level.
             {
@@ -465,6 +531,8 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
             static void initalazation()
             {
+
+                folow_delay = 8;
                 //------------------------------------------------------------------------------------------------
                 //we wont use the randomised starting positions becase we want to be able to set the spawn point manualy.
                 //------------------------------------------------------------------------------------------------
@@ -499,7 +567,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (level == 3)
                 {
-                    lives = 30;
+                    lives = 50;
 
                 }
                 else
@@ -693,7 +761,15 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         {
                             if (FrameCount % (4*waitMultipier) == 0 && FrameCount != 0)
                             {
-                                MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+                                if (folow_delay > 0)
+                                {
+                                    folow_delay--;
+                                }
+                                else
+                                {
+                                    MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+
+                                }
 
                             }
 
@@ -1092,6 +1168,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (lives > 0)
                 {
+                    folow_delay = 8;
                     Console.Clear();
                     Thread.Sleep(150);
 
@@ -1150,7 +1227,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         case ConsoleKey.S: wasd_pressed[1] = 1; break;
                         case ConsoleKey.A: wasd_pressed[2] = 1; break;
                         case ConsoleKey.D: wasd_pressed[3] = 1; break;
-                        case ConsoleKey.Escape: isRunning = false; break;
+                        case ConsoleKey.Escape: isRunning = false; exited = true; break;
 
                     }
 
@@ -1297,6 +1374,41 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         }
                         Console.ForegroundColor = ConsoleColor.White;
 
+
+                        //switches spikes on and off.
+                        if (GRID[Yaxis][Xaxis] == 17)
+                        {
+
+                            int waitmultiplier2 = 1;
+                            if (SLOWED_down >= 1)
+                            {
+                                waitmultiplier2 = 4;
+                            }
+
+                            if (FrameCount % (10 * waitmultiplier2) == 0 && FrameCount != 0)
+                            {
+                                GRID[Yaxis][Xaxis] = 16;
+
+                            }
+                        }
+                        else if (GRID[Yaxis][Xaxis] == 16)
+                        {
+
+                            int waitmultiplier2 = 1;
+                            if (SLOWED_down >= 1)
+                            {
+                                waitmultiplier2 = 4;
+                            }
+
+                            if (FrameCount % (10 * waitmultiplier2) == 0 && FrameCount != 0)
+                            {
+                                GRID[Yaxis][Xaxis] = 17;
+
+                            }
+                        }
+
+
+
                         if (Yaxis == playerPos[0] && Xaxis == playerPos[1])
                         {
                             if (SLOWED_down >= 1)
@@ -1391,17 +1503,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                                     Console.Write("!!");
 
-                                    int waitmultiplier = 1;
-                                    if (SLOWED_down>=1)
-                                    {
-                                        waitmultiplier = 4;
-                                    }
-                                   
-                                        if (FrameCount % (10*waitmultiplier) == 0 && FrameCount != 0)
-                                        {
-                                            GRID[Yaxis][Xaxis] = 17;
-
-                                        }
+                                 
                                     
 
                                     break;
@@ -1409,17 +1511,6 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                                     Console.ForegroundColor = ConsoleColor.Red;
                                     Console.Write("..");
 
-                                    int waitmultiplier2 = 1;
-                                    if (SLOWED_down >= 1)
-                                    {
-                                        waitmultiplier2 = 2;
-                                    }
-
-                                    if (FrameCount % (10*waitmultiplier2) == 0 && FrameCount!=0)
-                                    {
-                                        GRID[Yaxis][Xaxis] = 16;
-
-                                    }
 
                                     break;
 
