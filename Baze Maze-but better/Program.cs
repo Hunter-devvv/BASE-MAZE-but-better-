@@ -350,18 +350,18 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
             {
                  mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
                 mussiccc1.Load();
-                mussiccc1.PlayLooping();
            
                  mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
                 mussiccc2.Load();
 
                  mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
                 mussiccc3.Load();
+                mussiccc3.PlayLooping();
 
             }
 
             Console.Title = "Base Maze";
-            replacegrid(1);
+            replacegrid(3);
             get_enemys();
             initalazation();
 
@@ -828,7 +828,21 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         }
                         else
                         {
-                            MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+                            if ((E_stats[enemyID][3] == 2))
+                            {
+                                if (FrameCount % (4 * waitMultipier) == 0 && FrameCount != 0)
+                                {
+                                    MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+
+                                }
+
+                            }
+                            else
+                            {
+                                MoveEnemy(enemyID, E_stats[enemyID][1], E_stats[enemyID][0], E_stats[enemyID][2], E_stats[enemyID][3]);
+
+                            }
+
 
                         }
 
