@@ -289,7 +289,7 @@ namespace BaseMazeFINAL
                 new int[40] {1,1,0,1,1,1,0,1,1,0,1,1,0,1,0,1,1,1,1,0,1,1,1,1,1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,1,1,1,0,1,0,1,1,1,0,1,1,1,1,0,1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0},
-                new int[40] {0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
+                new int[40] {H,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1},
                 new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 
 
@@ -340,16 +340,28 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
             started = false;
             exited = false;
             menu();
-          
+
+            SoundPlayer mussiccc1;
+            SoundPlayer mussiccc2;
+            SoundPlayer mussiccc3;
+
 
             if (OperatingSystem.IsWindows())
             {
-                SoundPlayer mussiccc = new SoundPlayer("DesertoDuneosRockOrRoll.wav");
-                mussiccc.Load();
-                mussiccc.PlayLooping();
+                 mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
+                mussiccc1.Load();
+                mussiccc1.PlayLooping();
+           
+                 mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
+                mussiccc2.Load();
+
+                 mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
+                mussiccc3.Load();
+
             }
+
             Console.Title = "Base Maze";
-            replacegrid(3);
+            replacegrid(1);
             get_enemys();
             initalazation();
 
@@ -379,8 +391,42 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                             Thread.Sleep(200);
                             Console.WriteLine("press enter to continue...");
                             Console.ReadLine();
+                            if (level + 1 == 2)
+                            {
+                                if (OperatingSystem.IsWindows())
+                                {
+                                    mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
+                                    mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
+
+                                    mussiccc1.Stop();
+                                    mussiccc3.Stop();
+                                    mussiccc2.PlayLooping();
+                                    
+                                }
+
+                                }
+                            else
+                            {
+                                if (OperatingSystem.IsWindows())
+                                {
+                                    mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
+                                    mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
+
+                                    mussiccc1.Stop();
+                                    mussiccc2.Stop();
+                                    mussiccc3.PlayLooping();
+
+                                }
+
+                            }
+
                             replacegrid(level + 1);
+
+                          
                             get_enemys();
+
                             initalazation();
                             isRunning = true;
                         }
@@ -505,12 +551,16 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         switch (llevel)
                         {
                             case 1:
+                              
+
                                 numb_of_enemys = 8;
                                 level = 1;
                                 GRID[Yaxis][Xaxis] = GRID_lev1[Yaxis][Xaxis];
                             break;
 
                             case 2:
+                              
+
                                 numb_of_enemys = 0;
 
                                 level = 2;
@@ -518,6 +568,8 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                                 break;
 
                             case 3:
+
+
                                 numb_of_enemys = 19;
                                 level = 3;
                                 GRID[Yaxis][Xaxis] = GRID_lev3[Yaxis][Xaxis];
