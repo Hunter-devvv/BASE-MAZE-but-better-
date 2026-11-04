@@ -266,10 +266,10 @@ namespace BaseMazeFINAL
 
         static int[][] GRID_lev2 =
        {
-                new int[40]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                new int[40]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                new int[40]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-                new int[40]{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+                new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                 new int[40] {1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,T,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
@@ -335,11 +335,15 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
 
 
+
         static void Main(string[] args)
         {
+            ResizeConsole(123, 35);
             started = false;
             exited = false;
+            logo();
             menu();
+
 
             SoundPlayer mussiccc1;
             SoundPlayer mussiccc2;
@@ -432,8 +436,9 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         }
                         else
                         {
-                            Console.Clear();
-                            Console.WriteLine("YOU WIN");
+
+                            win();
+                            Thread.Sleep(800);
                             Console.ReadKey();
                         }
                         
@@ -443,10 +448,12 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     {
                         if (exited == true)
                         {
-                     
+                            return;
                         }
-                        Console.Clear();
-                        Console.WriteLine("YOU LOSE");
+
+                        lose();
+                        Thread.Sleep(800);
+
                         Console.ReadKey();
                         
                     }
@@ -456,8 +463,100 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
             }
 
 
+            static void logo()
+            {
+                Console.Clear();
+                Console.WriteLine("\n\n\n\n\n\n\n\n");
+                Console.WriteLine("                       ___/^^:;;;__");
+                Console.WriteLine("                   .:#########==## `     --_          _--     _------_   _------_   --_       --_");
+                Console.WriteLine("                  {#########“           |    \\       /    |  |        | |        | |   \\     |  |");
+                Console.WriteLine("                 /#######/              |  |\\ \\     / /|  |  |   __   | |   __   | |  | |    |  |");
+                Console.WriteLine("                /######|                |  | \\ \\   / / |  |  |  |  |  | |  |  |  | |  || |   |  |");
+                Console.WriteLine("               {######\\               , |  |  \\ \\ / /  |  |  |  |  |  | |  |  |  | |  | \\ \\  |  |");
+                Console.WriteLine("                 \\#######==_    ____-   |  |   \\ V /   |  |  |  |__|  | |  |__|  | |  |  \\ \\ |  |");
+                Console.WriteLine("                  \\#######----  /####/  |  |    \\ /    |  |  |        | |        | |  |   | ||  |");
+                Console.WriteLine("                   `:##############/    |__|     _     |__|   -______-   -______-  |__|    \\___/");
+                Console.WriteLine("                     ==-######--=’");
+                Console.WriteLine("                  ===================================================================================");
+                Console.WriteLine("                                                 /---|  [-----] |-| |-| |---_   [-]  _---_");
+                Console.WriteLine("                                                (  ,-     | |   | | | | |  _ |      |   _ |");
+                Console.WriteLine("                                                 \\_  -\\   | |   | | | | | | | | |-| |  || |");
+                Console.WriteLine("                                                   )   |  | |   | (_) | |  - |  | | |  || |");
+                Console.WriteLine("                                                 |____/   |_|   \\ ___ / |___-   |_|  -___-");
+                Thread.Sleep(200);
+                Console.WriteLine("\n\n\n    *press any key to continue*");
+                Console.ReadKey();
+            }
+            
+            static void lose()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\n\n\n\n\n\n");
+                Console.WriteLine("                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+                Console.WriteLine("                        ^        |----------|    _--_     --_          _--   |-------        ^   ");
+                Console.WriteLine("                      /___\\      | |--------    / __ \\   |    \\       /    | | |-----|     /___\\");
+                Console.WriteLine("                     / | | \\     | |           / |  | \\  |  |\\ \\     / /|  | | |____      / | | \\  ");
+                Console.WriteLine("                    /  | |  \\    | |  |-----| |  |__|  | |  | \\ \\   / / |  | | _____|    /  | |  \\");
+                Console.WriteLine("                   /   ---   \\   | |   ---  | |  ____  | |  |  \\ \\ / /  |  | | |        /   ---   \\");
+                Console.WriteLine("                  /    [ ]    \\  | |_____|  | |  |  |  | |  |   \\ V /   |  | | |_____  /    [ ]    \\");
+                Console.WriteLine("                  -------------  ___________| |__|  |__| |__|     _     |__| |_______| -------------");
+                Console.WriteLine();
+                Console.WriteLine("                    ___        _-------_   ___            ___   ---------     ----------       ___  ");
+                Console.WriteLine("                   |   |      |         |  \\  \\          /  /  |  |------|   |  ____   |      |   |   ");
+                Console.WriteLine("                   |   |      |   ___   |   \\  \\        /  /   |  |______    |  |    | |      |   |   ");
+                Console.WriteLine("                   |   |      |  |   |  |    \\  \\      /  /    |  _______|   |  -----  /      |   |    ");
+                Console.WriteLine("                    ___       |  |   |  |     \\  \\    /  /     |  |          |  -----  [       ___  ");
+                Console.WriteLine("                    ___       |  |___|  |      \\  \\  /  /      |  |          |  |    \\  \\      ___ ");
+                Console.WriteLine("                   |   |      |         |       \\  \\/  /       |  |_______   |  |     \\  \\    |   | ");
+                Console.WriteLine("                    ---       - _______-         \\____/        |_ ________|  |__|      \\_ \\    ---   ");
+                Console.WriteLine("                  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+
+            }
+
+            static void win()
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("\n\n\n\n\n\n");
+
+                Console.WriteLine("                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+                Console.WriteLine("                    ------  ___     ___  ______   ___  ___      ___    _    ___  ___   ___    ___  ------");
+                Console.WriteLine("                    |    |  \\  \\   /  / |      | |  |  |  |     | |   / \\   | |  |_|  |   \\   | |  |    |");
+                Console.WriteLine("                    |    |   \\  \\ /  /  |  |-| | |  |  |  |     | |  / ^ \\  | |  ___  | |\\ \\  | |  |    |");
+                Console.WriteLine("                    |    |    \\  -  /   |  | | | |  |  |  |     | | / / \\ \\ | |  | |  | | \\ \\ | |  |    |");
+                Console.WriteLine("                    |____|     \\   /    |  | | | |  |  |  |     | |/ /   \\ \\| |  | |  | |  \\ \\| |  |____| ");
+                Console.WriteLine("                     ----      |   |    |  |_| | |  |__|  |     | V /     \\ V |  | |  | |   \\ | |   ---- ");
+                Console.WriteLine("                    |____|     |___|    |______| |________|     -__/       \\__-  |_|  |_|    \\__|  |____| ");
+                Console.WriteLine("                  ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
+            }
+
+            static void ResizeConsole(int width, int height)
+            {
+                if (OperatingSystem.IsWindows())
+                {
+
+                    if (Console.BufferWidth < width)
+                    {
+                        Console.BufferWidth = width;
+                    }
+                    if (Console.BufferHeight < width)
+                    {
+                        Console.BufferHeight = width;
+                    }
+
+                    Console.SetWindowSize(width, height);
+
+                }
+            }
+
+
             static void menu()
             {
+
+
+
                 Console.Clear();
                 Console.WriteLine("|>================================================>------------------------------------\\_______________________________>");
                 Console.WriteLine("||");
@@ -517,7 +616,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (llevel == 3)
                 {
-                    lives = 25;
+                    lives = 30;
 
                 }
                 else
@@ -584,7 +683,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
             static void initalazation()
             {
 
-                folow_delay = 8;
+                folow_delay = 12;
                 //------------------------------------------------------------------------------------------------
                 //we wont use the randomised starting positions becase we want to be able to set the spawn point manualy.
                 //------------------------------------------------------------------------------------------------
@@ -619,7 +718,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (level == 3)
                 {
-                    lives = 50;
+                    lives = 30;
 
                 }
                 else
@@ -738,17 +837,33 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     //29=Barrier   S
                     //CHECK
 
+
+
                     bool canmove = true;
 
-                    if (moveX != 0 && moveY != 0)
+
+                    
+
+
+                    if (moveX != 0 && moveY != 0) //checks to make shure the player isnt no cliping throgh corners 
                     {
                         if (GRID[NextY][playerPos[1]] == 1 && GRID[playerPos[0]][NextX] == 1)
                         {
                             canmove = false;
 
                         }
+                        else if (GRID[NextY][playerPos[1]] == 1 || GRID[playerPos[0]][NextX] == 1)
+                        {
+                            if (playerspeed == 2)
+                            {
+                                canmove = false;
+
+                            }
+
+                        }
 
                     }
+
                     if (canmove == true)
                     {
                         switch (GRID[NextY][NextX])
@@ -791,6 +906,15 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
 
                 }
+
+                //see if player moved 2 succesfully moved 2 spaces at once, if they did reset player speed back to 1.
+                if ( (playerspeed==2) && (moveX == 2 || moveY == 2) && (NextY == playerPos[0] && NextX == playerPos[1]))
+                {
+
+                    playerspeed = 1;
+
+                }
+
 
                 if (!isRunning)
                     return;
@@ -1234,7 +1358,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (lives > 0)
                 {
-                    folow_delay = 8;
+                    folow_delay = 12;
                     Console.Clear();
                     Thread.Sleep(150);
 
@@ -1365,15 +1489,22 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
             static void LOADSCREEN()
             {
                 Console.SetCursorPosition(0, 0);
-                Console.WriteLine("-----------------------------------------------------------------------------------------------------");
-                Console.WriteLine($"Stock BaceMaze: By Hunter Cannon   ||    LIVES:{lives}       KEYS:{keys}      Master Keys:{masterkeys}  {GRID[^1][^1]} ");
-                Console.WriteLine("----------------------------------------------------------------------------------------------------\n");
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------");
+                Console.Write("  BaceMaze GOLD: By Hunter, Nathen, Braden, and Saige || ");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+
+                Console.WriteLine($"   LIVES:{lives}       KEYS:{keys}      Master Keys:{masterkeys} ");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("--------------------------------------------------------------------------------------------------------------------------\n");
 
                 for (int Yaxis = 0; Yaxis < 25; Yaxis++)
                 {
 
 
                     Console.WriteLine("");
+                    Console.Write("                    ");
 
                     for (int Xaxis = 0; Xaxis < 40; Xaxis++)
                     {
