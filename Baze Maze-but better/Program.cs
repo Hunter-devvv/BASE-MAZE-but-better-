@@ -616,7 +616,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (llevel == 3)
                 {
-                    lives = 30;
+                    lives = 50;
 
                 }
                 else
@@ -683,7 +683,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
             static void initalazation()
             {
 
-                folow_delay = 12;
+                folow_delay = 16;
                 //------------------------------------------------------------------------------------------------
                 //we wont use the randomised starting positions becase we want to be able to set the spawn point manualy.
                 //------------------------------------------------------------------------------------------------
@@ -715,10 +715,10 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                 moveY = 0;
 
                 PlayerWon = false;
-
+                
                 if (level == 3)
                 {
-                    lives = 30;
+                    lives = 50;
 
                 }
                 else
@@ -1358,7 +1358,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 if (lives > 0)
                 {
-                    folow_delay = 12;
+                    folow_delay = 16;
                     Console.Clear();
                     Thread.Sleep(150);
 
