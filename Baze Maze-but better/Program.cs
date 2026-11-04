@@ -360,7 +360,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                 mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
                 mussiccc2.Load();
 
-                 mussiccc3 = new SoundPlayer("BaseMazeLevel3 V3 FINALwav");
+                 mussiccc3 = new SoundPlayer("BaseMazeLevel3V3FINAL.wav");
                 mussiccc3.Load();
 
             }
@@ -400,9 +400,9 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                             {
                                 if (OperatingSystem.IsWindows())
                                 {
-                                    mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
+                                    mussiccc1 = new SoundPlayer("BaseMazeLevel3V3FINAL.wav");
                                     mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
-                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3 V3 FINAL.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3V3FINAL.wav");
 
                                     mussiccc1.Stop();
                                     mussiccc3.Stop();
@@ -417,7 +417,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                                 {
                                     mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
                                     mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
-                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3 V3 FINAL.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3V3FINAL.wav");
 
                                     mussiccc1.Stop();
                                     mussiccc2.Stop();

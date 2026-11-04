@@ -22,6 +22,9 @@
     <None Update="BaseMazeLevel3.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="BaseMazeLevel3V3FINAL.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="DesertoDuneosRockOrRoll.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
