@@ -289,7 +289,7 @@ new int[40] {1,1,0,1,1,0,0,1,1,0,1,0,0,1,0,1,0,1,1,0,1,A,0,0,0,0,0,1,1,1,A,1,0,0
 new int[40] {1,1,0,1,1,1,0,1,1,0,1,1,0,1,0,0,1,1,0,0,0,1,1,1,1,1,0,1,1,0,1,1,1,0,1,0,0,0,1,1},
 new int[40] {1,1,0,0,0,C,0,G,0,F,0,1,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,5,0,0,1,C,1,1},
 new int[40] {1,1,1,1,0,1,0,1,1,1,0,1,1,1,1,1,1,0,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,1,1,0,F,1,1},
-new int[40] {0,Q,0,0,0,1,5,0,0,0,0,1,A,0,0,0,0,0,1,0,0,0,1,0,F,0,G,G,0,F,F,0,G,0,A,1,B,1,1,1},
+new int[40] {1,T,0,0,0,1,5,0,0,0,0,1,A,0,0,0,0,0,1,0,0,0,1,0,F,0,G,G,0,F,F,0,G,0,A,1,B,1,1,1},
 new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
 
 
@@ -339,7 +339,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
         static void Main(string[] args)
         {
-            ResizeConsole(123, 35);
+            ResizeConsole(123, 45);
             started = false;
             exited = false;
             logo();
@@ -360,7 +360,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                 mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
                 mussiccc2.Load();
 
-                 mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
+                 mussiccc3 = new SoundPlayer("BaseMazeLevel3 V3 FINALwav");
                 mussiccc3.Load();
 
             }
@@ -402,7 +402,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                                 {
                                     mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
                                     mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
-                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3 V3 FINAL.wav");
 
                                     mussiccc1.Stop();
                                     mussiccc3.Stop();
@@ -417,7 +417,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                                 {
                                     mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
                                     mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
-                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3 V3 FINAL.wav");
 
                                     mussiccc1.Stop();
                                     mussiccc2.Stop();
@@ -661,7 +661,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                             case 2:
                               
 
-                                numb_of_enemys = 0;
+                                numb_of_enemys = 9;
 
                                 level = 2;
                                 GRID[Yaxis][Xaxis] = GRID_lev2[Yaxis][Xaxis];
@@ -1503,7 +1503,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                 for (int Yaxis = 0; Yaxis < 25; Yaxis++)
                 {
 
-
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.WriteLine("");
                     Console.Write("                    ");
 
@@ -1815,7 +1815,34 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     
                     }
 
+
+                
+                    
+
+
+
+
                 }
+
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine("\n");
+
+                Console.WriteLine("                                                   || ]  |---]  |-  -| ");
+                Console.WriteLine("                                                   ||/   |___    \\  /");
+                Console.WriteLine("                                                   ||\\   |        ||");
+                Console.WriteLine("                                                   || ]  |___]    ||");
+                
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("      ============================================================================================================");
+                Console.WriteLine("      =|                                   Pipe = || (vertical or == (horizontal)                                =");
+                Console.WriteLine("      =__________________________________________________________________________________________________________=");
+                Console.WriteLine("      =|[] = Wall  |    E1 = Enemy 1   |   E2 = Enemy 2    |   E3 = Enemy 3    |   o~ Key    |   m~ Master Key  |=");
+                Console.WriteLine("      =----------------------------------------------------------------------------------------------------------=");
+                Console.WriteLine("      =|{} = Lock  |  M = Master Lock  |   @1 = Portal 1   |   @2 = Portal 2   |  @ Slow Down temporary upgrade |=");
+                Console.WriteLine("      =---------------------------------------------------------------------------------------------------------|=");
+                Console.WriteLine("      =|   >> = Dual move (use once)   |       Spikes = !! (on) .. (off )      |         CP = Checkpoint        |=");
+                Console.WriteLine("      ============================================================================================================");
+
             }
 
         }
