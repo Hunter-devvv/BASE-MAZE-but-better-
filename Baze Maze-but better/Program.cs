@@ -1605,183 +1605,213 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         }
 
 
+                        //for level 2, this part of the code checks if this tile of a grid is close to the player. it is just rendered as a dark square
 
-                        if (Yaxis == playerPos[0] && Xaxis == playerPos[1])
+                        bool canrender = true;
+
+                        if (level == 2)
                         {
-                            if (SLOWED_down >= 1)
+                            float distanceY = (float)MathF.Abs(playerPos[0] - Yaxis);
+                            float distanceX = (float)MathF.Abs(playerPos[1] - Xaxis);
+
+                            float distanceTotal = (float)MathF.Sqrt((distanceY * distanceY) + (distanceX * distanceX));
+
+                            if (distanceTotal > 5)
                             {
-                                Console.ForegroundColor = ConsoleColor.Blue;
+                                canrender = false;
+                            }
+
+                        }
+
+                        if (canrender == false)
+                        {
+                            Console.ForegroundColor = ConsoleColor.DarkGray;                  
+                           
+                            Console.Write("@ ");
+
+                        }
+                        else
+                        { 
+                            if (Yaxis == playerPos[0] && Xaxis == playerPos[1])
+                            {
+                                if (SLOWED_down >= 1)
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Blue;
 
 
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Green;
+
+                                }
+
+                                Console.Write("P ");
+                            }
+                            else if (enemythere == 1)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+
+                                Console.Write("E1");
+                            }
+                            else if (enemythere == 2)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+
+                                Console.Write("E2");
+                            }
+                            else if (enemythere == 3)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+
+                                Console.Write("E3");
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Green;
 
+                                switch (GRID[Yaxis][Xaxis])
+                                {
+                                    case 0:
+                                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                                        Console.Write(". ");
+                                        break;
+
+                                    case 1:
+
+                                        Console.Write("[]");
+
+
+                                        break;
+                                    case 2:
+                                        Console.Write("E1");
+
+                                        break;
+                                    case 6:
+                                        Console.Write("E2");
+
+                                        break;
+                                    case 11:
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+
+                                        Console.Write("o~");
+
+                                        break;
+                                    case 12:
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
+
+                                        Console.Write("M~");
+
+                                        break;
+                                    case 13:
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                                        Console.Write("{}");
+
+                                        break;
+                                    case 14:
+                                        Console.ForegroundColor = ConsoleColor.Gray;
+
+                                        Console.Write("MM");
+
+                                        break;
+
+                                    case 15:
+                                        Console.ForegroundColor = ConsoleColor.Red;
+
+                                        Console.Write("!!");
+
+                                        break;
+                                    case 16:
+                                        Console.ForegroundColor = ConsoleColor.Red;
+
+                                        Console.Write("!!");
+
+
+
+
+                                        break;
+                                    case 17:
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.Write("..");
+
+
+                                        break;
+
+                                    case 18:
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+
+                                        Console.Write("WI");
+
+                                        break;
+                                    case 19:
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+
+                                        Console.Write("N ");
+
+                                        break;
+
+                                    case 21:
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                        Console.Write("@1");
+
+                                        break;
+                                    case 22:
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                        Console.Write("@1");
+
+                                        break;
+                                    case 23:
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                        Console.Write("@2");
+
+                                        break;
+                                    case 24:
+                                        Console.ForegroundColor = ConsoleColor.Magenta;
+
+                                        Console.Write("@2");
+
+                                        break;
+                                    case 25:
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+
+                                        Console.Write(">>");
+
+                                        break;
+                                    case 26:
+                                        Console.ForegroundColor = ConsoleColor.Blue;
+
+                                        Console.Write("@ ");
+
+                                        break;
+                                    case 27:
+                                        Console.ForegroundColor = ConsoleColor.Cyan;
+
+                                        Console.Write("CP");
+
+                                        break;
+                                    case 28:
+
+                                        Console.Write("||");
+
+                                        break;
+                                    case 29:
+                                        Console.Write("==");
+                                        break;
+                                    default:
+                                        Console.Write("  ");
+
+                                        break;
+
+
+                                }
                             }
 
-                            Console.Write("P ");
                         }
-                        else if (enemythere == 1)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-
-                            Console.Write("E1");
-                        }
-                        else if (enemythere == 2)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-
-                            Console.Write("E2");
-                        }
-                        else if (enemythere == 3)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Red;
-
-                            Console.Write("E3");
-                        }
-                        else
-                        {
-
-                            switch (GRID[Yaxis][Xaxis])
-                            {
-                                case 0:
-                                    Console.ForegroundColor = ConsoleColor.DarkGray;
-                                    Console.Write(". ");
-                                    break;
-
-                                case 1:
-
-                                    Console.Write("[]");
-
-
-                                    break;
-                                case 2:
-                                    Console.Write("E1");
-
-                                    break;
-                                case 6:
-                                    Console.Write("E2");
-
-                                    break;
-                                case 11:
-                                    Console.ForegroundColor = ConsoleColor.Yellow;
-
-                                    Console.Write("o~");
-
-                                    break;
-                                case 12:
-                                    Console.ForegroundColor = ConsoleColor.Yellow;
-
-                                    Console.Write("M~");
-
-                                    break;
-                                case 13:
-                                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                                    Console.Write("{}");
-
-                                    break;
-                                case 14:
-                                    Console.ForegroundColor = ConsoleColor.Gray;
-
-                                    Console.Write("MM");
-
-                                    break;
-
-                                case 15:
-                                    Console.ForegroundColor = ConsoleColor.Red;
-
-                                    Console.Write("!!");
-
-                                    break;
-                                case 16:
-                                    Console.ForegroundColor = ConsoleColor.Red;
-
-                                    Console.Write("!!");
-
-                                 
-                                    
-
-                                    break;
-                                case 17:
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    Console.Write("..");
-
-
-                                    break;
-
-                                case 18:
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-
-                                    Console.Write("WI");
-
-                                    break;
-                                case 19:
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-
-                                    Console.Write("N ");
-
-                                    break;
-
-                                case 21:
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-
-                                    Console.Write("@1");
-
-                                    break;
-                                case 22:
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-
-                                    Console.Write("@1");
-
-                                    break;
-                                case 23:
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-
-                                    Console.Write("@2");
-
-                                    break;
-                                case 24:
-                                    Console.ForegroundColor = ConsoleColor.Magenta;
-
-                                    Console.Write("@2");
-
-                                    break;
-                                case 25:
-                                    Console.ForegroundColor = ConsoleColor.Blue;
-
-                                    Console.Write(">>");
-
-                                    break;
-                                case 26:
-                                    Console.ForegroundColor = ConsoleColor.Blue;
-
-                                    Console.Write("@ ");
-
-                                    break;
-                                case 27:
-                                    Console.ForegroundColor = ConsoleColor.Cyan;
-
-                                    Console.Write("CP");
-
-                                    break;
-                                case 28:
-
-                                    Console.Write("||");
-
-                                    break;
-                                case 29:
-                                    Console.Write("==");
-                                    break;
-                                default:
-                                    Console.Write("  ");
-
-                                    break;
-
-
-                            }
-                        }
+                    
+                    
                     }
 
                 }
