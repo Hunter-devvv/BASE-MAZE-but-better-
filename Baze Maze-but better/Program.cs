@@ -600,11 +600,18 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     Console.Clear();
                     started = true;
                 }
-                else
+                else if (button == ConsoleKey.Spacebar)
                 {
                     exited = true;
                     started = false;
+
                 }
+                else
+                {
+                    menu();
+                }
+
+                
             }
 
             static void replacegrid(int llevel)  //resets the grid to a new level.
@@ -1838,7 +1845,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                 Console.WriteLine("      =__________________________________________________________________________________________________________=");
                 Console.WriteLine("      =|[] = Wall  |    E1 = Enemy 1   |   E2 = Enemy 2    |   E3 = Enemy 3    |   o~ Key    |   m~ Master Key  |=");
                 Console.WriteLine("      =----------------------------------------------------------------------------------------------------------=");
-                Console.WriteLine("      =|{} = Lock  |  M = Master Lock  |   @1 = Portal 1   |   @2 = Portal 2   |  @ Slow Down temporary upgrade |=");
+                Console.WriteLine("      =|{} = Lock  |  MM = Master Lock |   @1 = Portal 1   |   @2 = Portal 2   |  @ Slow Down temporary upgrade |=");
                 Console.WriteLine("      =---------------------------------------------------------------------------------------------------------|=");
                 Console.WriteLine("      =|   >> = Dual move (use once)   |       Spikes = !! (on) .. (off )      |         CP = Checkpoint        |=");
                 Console.WriteLine("      ============================================================================================================");
