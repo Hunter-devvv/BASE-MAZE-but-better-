@@ -600,7 +600,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     Console.Clear();
                     started = true;
                 }
-                else if (button == ConsoleKey.Spacebar)
+                else if (button == ConsoleKey.Escape)
                 {
                     exited = true;
                     started = false;
@@ -1634,8 +1634,16 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         if (canrender == false)
                         {
                             Console.ForegroundColor = ConsoleColor.DarkGray;                  
-                           
-                            Console.Write("@ ");
+                           if (Yaxis % 2 == 0)
+                            {
+                                Console.Write("@ ");
+
+                            }
+                            else
+                            {
+                                Console.Write(" @");
+
+                            }
 
                         }
                         else
