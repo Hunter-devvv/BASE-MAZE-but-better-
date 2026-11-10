@@ -90,6 +90,10 @@ namespace BaseMazeFINAL
 
         static int folow_delay = 0;
 
+        static int enterlevel = 0;
+
+        static bool WIN_but_cooler = false;
+
         static int[][] E_stats =
        {
 
@@ -274,11 +278,11 @@ new int[40] {1,F,0,0,G,1,0,F,C,G,C,0,1,0,1,0,0,1,1,A,0,1,1,1,0,1,1,0,0,1,4,0,0,1
 new int[40] {1,1,0,1,C,1,0,0,1,0,1,1,1,0,1,1,0,0,0,1,G,0,0,1,0,0,1,1,0,1,0,1,1,0,0,0,F,C,G,1},
 new int[40] {1,A,1,C,F,1,1,1,1,1,1,0,1,0,1,1,0,1,0,1,1,1,0,1,1,0,0,1,0,1,0,0,0,0,0,1,1,1,1,1},
 new int[40] {1,G,1,A,1,0,0,0,1,0,1,0,0,F,0,0,0,0,1,0,0,1,F,1,0,1,0,0,0,0,0,1,1,0,0,1,A,0,0,1},
-new int[40] {1,0,1,1,1,1,1,0,0,0,0,0,1,1,1,1,1,1,1,0,1,0,0,0,0,0,1,1,1,1,1,1,0,1,0,0,1,1,0,1},
+new int[40] {1,0,1,1,1,1,1,0,0,0,1,0,1,1,1,1,1,1,1,0,1,0,0,0,0,0,1,1,1,1,1,1,0,1,0,0,1,1,0,1},
 new int[40] {1,0,F,0,0,0,0,0,1,0,1,0,0,1,0,0,0,1,1,0,0,0,1,0,1,5,0,0,0,0,0,0,0,C,0,1,0,1,0,1},
 new int[40] {1,1,1,1,1,1,1,1,1,0,1,0,0,0,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,0,1,0,1,1,1,1,0,0,0,1},
 new int[40] {1,0,0,0,0,0,0,0,1,0,1,0,1,1,5,0,0,0,0,0,0,0,0,1,0,1,1,1,0,1,0,0,1,1,0,0,0,1,0,1},
-new int[40] {1,1,1,1,G,1,1,0,1,4,1,0,1,0,1,1,1,1,1,0,1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,1,0,1,0,1},
+new int[40] {1,1,1,1,G,1,1,0,0,4,1,0,1,0,1,1,1,1,1,0,1,1,0,1,0,0,1,1,0,0,0,0,0,0,0,1,0,1,0,1},
 new int[40] {1,5,0,0,0,0,1,0,1,1,1,4,0,0,0,0,0,0,0,1,0,0,0,0,C,0,0,0,0,0,1,1,0,1,0,1,0,0,1,1},
 new int[40] {1,0,0,1,0,0,1,0,0,0,1,1,1,1,1,1,1,0,0,0,1,0,1,1,1,1,1,1,0,0,1,0,0,1,0,0,1,0,0,1},
 new int[40] {1,1,1,1,1,G,1,0,1,0,0,0,1,0,0,0,0,0,1,0,0,0,1,A,0,0,0,1,1,0,0,1,1,1,1,0,0,1,0,1},
@@ -389,14 +393,18 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                     if (PlayerWon == true)
                     {
 
-                        if (level < 3)
+                        if (level < 3 || enterlevel!=0)
                         {
                             Console.Clear();
-                            Console.WriteLine($"YOU BEAT LEVEL {level}!");
-                            Thread.Sleep(200);
-                            Console.WriteLine("press enter to continue...");
-                            Console.ReadLine();
-                            if (level + 1 == 2)
+                            if (enterlevel == 0)
+                            {
+                                Console.WriteLine($"YOU BEAT LEVEL {level}!");
+                                Thread.Sleep(200);
+                                Console.WriteLine("press enter to continue...");
+                                Console.ReadLine();
+                            }
+
+                            if ((level + 1 == 2 || enterlevel == 2 )&& enterlevel!=1 )
                             {
                                 if (OperatingSystem.IsWindows())
                                 {
@@ -407,12 +415,26 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                                     mussiccc1.Stop();
                                     mussiccc3.Stop();
                                     mussiccc2.PlayLooping();
-                                    
-                                }
 
                                 }
+
+                            }
+                            else if (enterlevel == 1)
+                            {
+                                if (OperatingSystem.IsWindows())
+                                {
+                                    mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
+                                    mussiccc2 = new SoundPlayer("BaseMazeLevel2.wav");
+                                    mussiccc3 = new SoundPlayer("BaseMazeLevel3V3FINAL.wav");
+
+                                    mussiccc3.Stop();
+                                    mussiccc2.Stop();
+                                    mussiccc1.PlayLooping();
+                                }
+                            }
                             else
                             {
+
                                 if (OperatingSystem.IsWindows())
                                 {
                                     mussiccc1 = new SoundPlayer("BaseMazeLevel1.wav");
@@ -425,21 +447,36 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                                 }
 
+                            
+
+
                             }
+                            if (enterlevel == 0)
+                            {
+                                replacegrid(level + 1);
 
-                            replacegrid(level + 1);
 
-                          
-                            get_enemys();
+                                get_enemys();
 
-                            initalazation();
-                            isRunning = true;
+                                initalazation();
+                                isRunning = true;
+                            }
+                            else
+                            {
+                                replacegrid(enterlevel);
+
+
+                                get_enemys();
+
+                                initalazation();
+                                isRunning = true;
+                            }
+                           
                         }
                         else
                         {
-
+                            Console.Clear();
                             win();
-                            Thread.Sleep(800);
                             Console.ReadKey();
                         }
                         
@@ -555,7 +592,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
             static void menu()
             {
-
+                
 
 
                 Console.Clear();
@@ -577,7 +614,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                 Console.WriteLine("                                    ||>============================================<||");
                 Console.WriteLine("                                                     SAIGE ENQUIST-HINZ          ");
                 Console.WriteLine("                                                       HUNTER CANNON");
-                Console.WriteLine("                                                        NATH FERONG");
+                Console.WriteLine("                                                        NATHEN FERONG");
                 Console.WriteLine("                                                      BRAYDEN LOFGREN");
                 Console.WriteLine("");
                 Console.WriteLine("      ----   -----_    -----|   ----_   ----_     /---|      |-----| |---|        ----   |-|   __--__   --  --");
@@ -690,7 +727,8 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
             static void initalazation()
             {
-
+                WIN_but_cooler = false;
+                enterlevel = 0;
                 folow_delay = 16;
                 //------------------------------------------------------------------------------------------------
                 //we wont use the randomised starting positions becase we want to be able to set the spawn point manualy.
@@ -742,22 +780,7 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
                 Console.CursorVisible = false;
 
-                for (int Yax = 0; Yax < 25; Yax++)
-                {
-                    for (int Xax = 0; Xax < 40; Xax++)
-                    {
-                        switch (GRID[Yax][Xax])
-                        {
-                            case 2:
-
-
-
-
-
-                                break;
-                        }
-                    }
-                }
+               
 
 
             }
@@ -785,6 +808,17 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
 
             static void Phyisics()
             {
+                if (WIN_but_cooler == true)
+                {
+                    WIN_but_cooler = false;
+                    if (level == 3)
+                    {
+                        playerPos[0] = 1;
+                        playerPos[1] = 26;
+                    }
+              
+
+                }
 
 
 
@@ -887,8 +921,8 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                             case 16: PLAYER_DIED(); break;       //eneabled spikes
                             case 17: playerPos[0] = NextY; playerPos[1] = NextX; break;       //dissabled spikes
 
-                            case 18: PlayerWon = true; isRunning = false; break;       //win
-                            case 19: PlayerWon = true; isRunning = false; break;       //win
+                            case 18: PlayerWon = true; isRunning = false; enterlevel = 0; break;       //win
+                            case 19: PlayerWon = true; isRunning = false; enterlevel = 0; break;       //win
 
                             case 21: playerPos[0] = portal_pos_1[2]+moveY; playerPos[1] = portal_pos_1[3]+moveX; break;       //teliport when entering portal 
                             case 22: playerPos[0] = portal_pos_1[0]+moveY; playerPos[1] = portal_pos_1[1] + moveX; break;       //teliport when entering portal
@@ -1425,6 +1459,11 @@ new int[40] {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,E,E,E,E,E,E
                         case ConsoleKey.S: wasd_pressed[1] = 1; break;
                         case ConsoleKey.A: wasd_pressed[2] = 1; break;
                         case ConsoleKey.D: wasd_pressed[3] = 1; break;
+                        case ConsoleKey.D1: enterlevel = 1;  PlayerWon = true; isRunning = false; break;
+                        case ConsoleKey.D2: enterlevel = 2;  PlayerWon = true; isRunning = false;  break;
+                        case ConsoleKey.D3: enterlevel = 3;  PlayerWon = true; isRunning = false;  break;
+                        case ConsoleKey.D4:WIN_but_cooler = true; break;
+
                         case ConsoleKey.Escape: isRunning = false; exited = true; break;
 
                     }
